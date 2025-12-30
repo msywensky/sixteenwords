@@ -1,0 +1,58 @@
+.directions-root {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.directions-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.step {
+  margin: 1rem 0;
+}
+.example {
+  margin: 0.75rem 0 1.25rem;
+}
+.row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.tile {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid #d0d0d0;
+  font-weight: 700;
+  background: #ffffff;
+}
+.tile--correct {
+  background: #6aaa64;
+  color: white;
+  border-color: #6aaa64;
+}
+.tile--present {
+  background: #c9b458;
+  color: white;
+  border-color: #c9b458;
+}
+.tile--absent {
+  background: #787c7e;
+  color: white;
+  border-color: #787c7e;
+}
+.nav-link {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.nav-link a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}

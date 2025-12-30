@@ -1,0 +1,358 @@
+.game-root {
+  max-width: 980px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  padding-bottom: 10rem; /* space for fixed keyboard */
+}
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.game-header .btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.game-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  flex: 1;
+}
+
+.game-tracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+.puzzle-track {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  max-width: 60%;
+}
+.track-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #f0f0f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #333;
+  font-size: 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.track-dot.active {
+  box-shadow: 0 0 0 2px rgba(106, 170, 100, 0.14);
+}
+.track-dot.solved {
+  background: #6aaa64;
+  color: white;
+  border-color: #6aaa64;
+}
+.guesses {
+  font-weight: 600;
+}
+stair .guesses-count {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.puzzles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.puzzle-card {
+  border: 1px solid #e6e6e6;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.puzzle-index {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+}
+.puzzle-tiles {
+  display: flex;
+  gap: 0.4rem;
+}
+.puzzle-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.puzzle-tiles .tile {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 2px solid #d0d0d0;
+  background: #fff;
+}
+
+/* invalid guess shake */
+.puzzle-tiles.invalid {
+  animation: shake 700ms ease;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* flip/reveal animation */
+.tile {
+  backface-visibility: hidden;
+  transform-origin: center bottom;
+}
+.tile.revealed {
+  animation: flip 450ms ease forwards;
+}
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+.tile.correct {
+  background: #6aaa64;
+  border-color: #6aaa64;
+  color: #fff;
+}
+.tile.present {
+  background: #c9b458;
+  border-color: #c9b458;
+  color: #fff;
+}
+.tile.absent {
+  background: #787c7e;
+  border-color: #787c7e;
+  color: #fff;
+}
+
+.keyboard {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  width: 50%; /* match roughly two puzzles across */
+  max-width: 520px;
+  min-width: 360px;
+  z-index: 1200;
+  background: #ffffff; /* opaque to hide puzzles underneath */
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.18);
+  border-radius: 12px 12px 8px 8px;
+  padding: 0.6rem 0.8rem;
+  pointer-events: auto;
+}
+
+/* toast for invalid-word messages */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 92px;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+.keyboard .row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+.keyboard--qwerty .row--qwerty {
+  justify-content: center;
+}
+.keyboard--qwerty .row--offset {
+  padding-left: 28px;
+}
+.key {
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f6f6f6;
+  cursor: pointer;
+  min-width: 0;
+  font-size: 0.98rem;
+  text-align: center;
+  font-weight: 700;
+  flex: 1; /* allow keys to expand evenly to fill row */
+}
+.key.wide {
+  flex: 1.6; /* wider than other keys */
+  min-width: 48px;
+}
+
+.key.absent {
+  background: #787c7e;
+  color: white;
+  border-color: #787c7e;
+}
+.key.present {
+  background: #c9b458;
+  color: white;
+  border-color: #c9b458;
+}
+.key.correct {
+  background: #6aaa64;
+  color: white;
+  border-color: #6aaa64;
+}
+.key.disabled {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Responsive rules: make grid, tiles and keyboard adapt to smaller screens */
+@media (max-width: 880px) {
+  .puzzles-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .track-dot {
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
+  }
+  .puzzle-tiles .tile {
+    width: 32px;
+    height: 32px;
+  }
+  .keyboard {
+    width: calc(100% - 1rem);
+    max-width: none;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    padding: 0.25rem 0.5rem;
+  }
+  .key {
+    min-width: 26px;
+    padding: 0.28rem 0.45rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-root {
+    padding: 0 0.75rem;
+    padding-bottom: calc(12rem + env(safe-area-inset-bottom));
+  }
+  .puzzles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .puzzle-track {
+    max-width: 100%;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    overflow-x: auto;
+  }
+  .track-dot {
+    width: 20px;
+    height: 20px;
+    font-size: 0.72rem;
+    padding: 0;
+  }
+  .puzzle-card {
+    padding: 0.5rem;
+  }
+  .puzzle-tiles .tile {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+  }
+  .keyboard {
+    width: calc(100% - 1rem);
+    bottom: env(safe-area-inset-bottom, 12px);
+    padding: 0.2rem 0.45rem;
+    border-radius: 10px 10px 6px 6px;
+    min-width: 0;
+  }
+  .key.wide {
+    min-width: 48px;
+  }
+}
+
+@media (max-width: 420px) {
+  .puzzles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.45rem;
+  }
+  .track-dot {
+    width: 18px;
+    height: 18px;
+    font-size: 0.68rem;
+    padding: 0;
+  }
+  .puzzle-tiles .tile {
+    width: 26px;
+    height: 26px;
+  }
+  .game-title {
+    font-size: 1rem;
+  }
+  .puzzle-card {
+    padding: 0.4rem;
+  }
+  .keyboard {
+    bottom: env(safe-area-inset-bottom, 8px);
+    padding: 0.15rem 0.4rem;
+    width: calc(100% - 0.6rem);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 0;
+    max-width: none;
+  }
+  .key {
+    min-width: 22px;
+    padding: 0.18rem 0.32rem;
+    font-size: 0.74rem;
+  }
+}
