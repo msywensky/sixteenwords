@@ -251,7 +251,7 @@ export default function GamePage({ onBack, onShowDirections }: GameProps) {
   // fetch allowed words from public/words.txt once
   useEffect(() => {
     let mounted = true;
-    fetch("/guesses.txt")
+    fetch(`${import.meta.env.BASE_URL}guesses.txt`)
       .then((r) => r.text())
       .then((txt) => {
         if (!mounted) return;
@@ -277,7 +277,7 @@ export default function GamePage({ onBack, onShowDirections }: GameProps) {
   // fetch answers list and compute deterministic daily solutions
   useEffect(() => {
     let mounted = true;
-    fetch("/answers.txt")
+    fetch(`${import.meta.env.BASE_URL}answers.txt`)
       .then((r) => r.text())
       .then((txt) => {
         if (!mounted) return;
