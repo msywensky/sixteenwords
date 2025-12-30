@@ -1,6 +1,6 @@
 # SixteenWords
 
-SixteenWords is a small React + TypeScript + Vite project that implements a multi-puzzle word-guessing game inspired by Sedecordle-style daily puzzles. Definite work in progress. It's not done by any means, I'm just tinkering to
+SixteenWords is a small React + TypeScript + Vite project that implements a multi-puzzle word-guessing game inspired by Sedecordle-style daily puzzles. Definite work in progress. It's not done by any means, I'm just tinkering to learn react + vite.
 
 Features
 
