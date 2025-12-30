@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./WelcomePage.css";
 import DirectionsPage from "./directions";
 import GamePage from "../game/GamePage";

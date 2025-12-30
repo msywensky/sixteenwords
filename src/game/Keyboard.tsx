@@ -1,4 +1,4 @@
-import React from "react";
+// JSX runtime handles React; no default import needed
 
 type KeyState = "absent" | "present" | "correct" | undefined;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import GameHeader from "./GameHeader";
 import Keyboard from "./Keyboard";
 import "./game.css";
@@ -31,7 +31,7 @@ export default function GamePage({ onBack, onShowDirections }: GameProps) {
 
   // placeholder solutions for each puzzle (use real puzzle data later)
 
-  const [activePuzzle, setActivePuzzle] = useState(0);
+  const [activePuzzle] = useState(0);
   const [guessesLeft, setGuessesLeft] = useState(21);
   const [currentGuess, setCurrentGuess] = useState("");
   const [keyStates, setKeyStates] = useState<
